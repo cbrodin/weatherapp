@@ -16,7 +16,7 @@ function formatDate(currentDate) {
     "Wednesday",
     "Thursday",
     "Friday",
-    "Saturday"
+    "Saturday",
   ];
 
   let day = days[weekDay];
