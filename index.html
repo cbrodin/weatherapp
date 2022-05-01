@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link href="src/style.css" rel="stylesheet" type="text/css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Weather App</title>
+  </head>
+  <body>
+    <div class="card">
+      <div class="main-contain">
+        <br />
+        <form>
+          <input placeholder="enter city name" id="enterCity" />
+          <button type="submit" class="btn btn-info" id="topSearch">
+            Search
+          </button>
+          <button type="button" class="btn btn-dark" id="Use-Curr">
+            Current
+          </button>
+        </form>
+        <br />
+        <div class="container-md">
+          <div class="row align-items-start">
+            <div class="col">
+              <div class="container">
+                <div class="row">
+                  <div class="col">
+                    <h1 id="main"><strong></strong></h1>
+                    <p id="currentDate">Sunday 5:40 PM</p>
+                    <p>
+                      High: <span id="mainHigh"></span>°
+                      <br />
+                      Low: <span id="mainLow"> </span>°
+                    </p>
+                  </div>
+                  <div class="col">
+                    <h2><span id="temp-descript"></span></h2>
+                    <span id="currentTemp"></span
+                    ><a href="#" id="fahrenheit"> °F </a
+                    ><span class="barrier"> | </span
+                    ><a href="#" id="celcius">°C</a>
+                    <p>
+                      <br />
+                      Humidity: <span id="humid"></span>%
+                      <br />
+                      Wind: <span id="wind"></span> MPH
+                      <br />
+                      Feels Like: <span id="feelsLike"></span>°
+                    </p>
+                    <br />
+                    <br />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br />
+        <br />
+        <div class="second-contain">
+          <div class="row align-items-start">
+            <div class="col-2">
+              <p>
+                Monday<br />
+                ☁️ <br />
+                83°<br />
+                61°<br />
+              </p>
+            </div>
+            <div class="col-2">
+              Tuesday<br />
+              ⛅️ <br />
+              96°<br />
+              63°<br />
+            </div>
+            <div class="col-2">
+              Wednesday <br />
+              ☀️ <br />
+              78°<br />
+              53°<br />
+            </div>
+            <div class="col-2">
+              Thursday<br />
+              ☀️ <br />
+              76°<br />
+              49°<br />
+            </div>
+            <div class="col-2">
+              Friday<br />
+              ☀️ <br />
+              76°<br />
+              45°<br />
+            </div>
+            <div class="col-2">
+              Saturday<br />
+              ☀️ <br />
+              85°<br />
+              54°<br />
+            </div>
+          </div>
+        </div>
+        <br />
+        <br />
+        <div class="row align-items-start">
+          <div class="col-3" id="commCities">
+            <button type="button" class="btn btn-dark" id="Den">Denver</button
+            ><br />
+          </div>
+          <div class="col-3">
+            <button type="button" class="btn btn-dark" id="Sea">Seattle</button
+            ><br />
+          </div>
+          <div class="col-3">
+            <button type="button" class="btn btn-dark" id="Tam">Tampa</button
+            ><br />
+          </div>
+          <div class="col-3">
+            <button type="button" class="btn btn-dark" id="Chi">Chicago</button
+            ><br />
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="src/indexx.js"></script>
+  </body>
+</html>
