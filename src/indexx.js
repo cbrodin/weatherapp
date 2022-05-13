@@ -26,7 +26,7 @@ let now = new Date();
 let currentDate = document.querySelector("p");
 currentDate.innerHTML = formatDate(now);
 
-function displayWeatherCondition(response) {
+function displayWeatherCondition(response) { 
   document.querySelector("#main").innerHTML = response.data.name;
   document.querySelector("#currentTemp").innerHTML = Math.round(
     response.data.main.temp
@@ -45,10 +45,14 @@ function displayWeatherCondition(response) {
   );
   document.querySelector("#feelsLike").innerHTML = Math.round(
     response.data.main.feels_like
-  );
-  document.querySelector("#temp-descript").innerHTML =
-    response.data.weather[0].main;
+  ); 
+          document.querySelector("#temp-descript").innerHTML =
+            response.data.weather[0].description; 
 }
+        function tempDescriptEmoji(response) { document.querySelector("#tempDescriptEmoji");   
+        tempDescriptEmoji.setAttribute =
+          "src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+        ;}
 
 function searchCity(city) {
   let apiKey = "40ee9c494fa4d6774c1dda0bb71d8806";
