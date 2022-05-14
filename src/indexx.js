@@ -26,33 +26,28 @@ let now = new Date();
 let currentDate = document.querySelector("p");
 currentDate.innerHTML = formatDate(now);
 
-function displayWeatherCondition(response) { 
-  document.querySelector("#main").innerHTML = response.data.name;
-  document.querySelector("#currentTemp").innerHTML = Math.round(
-    response.data.main.temp
-  );
-  document.querySelector("#humid").innerHTML = Math.round(
-    response.data.main.humidity
-  );
-  document.querySelector("#mainHigh").innerHTML = Math.round(
-    response.data.main.temp_min
-  );
-  document.querySelector("#mainLow").innerHTML = Math.round(
-    response.data.main.temp_max
-  );
-  document.querySelector("#wind").innerHTML = Math.round(
-    response.data.wind.speed
-  );
-  document.querySelector("#feelsLike").innerHTML = Math.round(
-    response.data.main.feels_like
-  ); 
-          document.querySelector("#temp-descript").innerHTML =
-            response.data.weather[0].description; 
-}
-        function tempDescriptEmoji(response) { document.querySelector("#tempDescriptEmoji");   
-        tempDescriptEmoji.setAttribute =
-          "src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-        ;}
+function displayWeatherCondition(response) {
+  let mainElement = document.querySelector("#main");
+  let curTempElement = document.querySelector("#currentTemp");
+  let humidElement = document.querySelector("#humid");
+  let mainHighElement = document.querySelector("#mainLow");
+  let mainLowElement = document.querySelector("#mainHigh");
+  let windElement = document.querySelector("#wind");
+  let feelsElement = document.querySelector("#feelsLike");
+  let tempDescrElement = document.querySelector("#temp-descript");
+  let tempEmojiElement = document.querySelector("#tempEmoji");
+
+
+  mainElement.innerHTML = response.data.name;
+  curTempElement.innerHTML = Math.round(response.data.main.temp);
+  humidElement.innerHTML = Math.round(response.data.main.humidity);
+  mainHighElement.innerHTML = Math.round(response.data.main.temp_min);
+  mainLowElement.innerHTML = Math.round(response.data.main.temp_max);
+  windElement.innerHTML = Math.round(response.data.wind.speed);
+  feelsElement.innerHTML = Math.round(response.data.main.feels_like);
+  tempDescrElement.innerHTML = response.data.weather[0].description;
+  tempEmojiElement.setAttribute = "src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  }
 
 function searchCity(city) {
   let apiKey = "40ee9c494fa4d6774c1dda0bb71d8806";
