@@ -27,3 +27,9 @@ color: #fff;}
 
 #EndCode {text-align: center; font-size: smaller;}
 #temp-descript {text-transform: capitalize;}
+
+#fahrenheit.active {color: #996666;
+  cursor: default;
+}
+#fahrenheit.active:hover {text-decoration: none;
+}

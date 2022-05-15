@@ -37,6 +37,9 @@ function displayWeatherCondition(response) {
   let tempDescrElement = document.querySelector("#temp-descript");
   let tempEmojiElement = document.querySelector("#tempEmoji");
 
+fahrenheitTemp = response.data.main.temp
+celciusTemp = response.data.main.temp;
+
 
   mainElement.innerHTML = response.data.name;
   curTempElement.innerHTML = Math.round(response.data.main.temp);
@@ -71,11 +74,38 @@ function getCurrentLocation(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(searchLocation);
 }
+function showCelciusTemp (event) {
+  event.preventDefault();
+  let curTempElement = document.querySelector("#currentTemp");
+
+   celciusTemp.classList.remove("active");
+   fahrenheitTemp.classList.add("active");
+  let CelciusTemp = (fahrenheitTemp * 1.8 )+ 32;
+  curTempElement.innerHTML = Math.round(CelciusTemp);
+}
+
+function showFahrenheitTemp (event) {
+  event.preventDefault();
+  let curTempElement = document.querySelector("#currentTemp");
+  
+   celciusTemp.classList.add("active");
+   fahrenheitTemp.classList.remove("active")
+  let fahrenheitTemp = (celciusTemp);
+  curTempElement.innerHTML = Math.round(fahrenheitTemp);
+}
 
 let form = document.querySelector("form");
 form.addEventListener("submit", submitSearch);
 
 let currentLocationButton = document.querySelector("#Use-Curr");
 currentLocationButton.addEventListener("click", getCurrentLocation);
+
+let fahrenheitTemp = null
+let celciusTemp = null;
+
+let celcius = document.querySelector("#celcius");
+celcius.addEventListener("click", showCelciusTemp);
+let fahrenheit = document.querySelector("#fahrenheit");
+fahrenheit.addEventListener("click", showFahrenheitTemp);
 
 searchCity("Austin");
