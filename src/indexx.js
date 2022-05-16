@@ -37,9 +37,7 @@ function displayWeatherCondition(response) {
   let tempDescrElement = document.querySelector("#temp-descript");
   let tempEmojiElement = document.querySelector("#tempEmoji");
 
-fahrenheitTemp = response.data.main.temp
-celciusTemp = response.data.main.temp;
-
+  fahrenheitTemp = response.data.main.temp;
 
   mainElement.innerHTML = response.data.name;
   curTempElement.innerHTML = Math.round(response.data.main.temp);
@@ -49,8 +47,12 @@ celciusTemp = response.data.main.temp;
   windElement.innerHTML = Math.round(response.data.wind.speed);
   feelsElement.innerHTML = Math.round(response.data.main.feels_like);
   tempDescrElement.innerHTML = response.data.weather[0].description;
-  tempEmojiElement.setAttribute = "src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-  }
+  tempEmojiElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+}
+
 
 function searchCity(city) {
   let apiKey = "40ee9c494fa4d6774c1dda0bb71d8806";
@@ -74,23 +76,22 @@ function getCurrentLocation(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(searchLocation);
 }
-function showCelciusTemp (event) {
+function showCelciusTemp(event) {
   event.preventDefault();
   let curTempElement = document.querySelector("#currentTemp");
 
-   celciusTemp.classList.remove("active");
-   fahrenheitTemp.classList.add("active");
-  let CelciusTemp = (fahrenheitTemp * 1.8 )+ 32;
-  curTempElement.innerHTML = Math.round(CelciusTemp);
+  celcius.classList.add("active");
+  fahrenheit.classList.remove("active");
+  let celciusTemp = ((fahrenheitTemp - 32) * 5) / 9;
+  curTempElement.innerHTML = Math.round(celciusTemp);
 }
 
-function showFahrenheitTemp (event) {
+function showFahrenheitTemp(event) {
   event.preventDefault();
   let curTempElement = document.querySelector("#currentTemp");
-  
-   celciusTemp.classList.add("active");
-   fahrenheitTemp.classList.remove("active")
-  let fahrenheitTemp = (celciusTemp);
+
+  celcius.classList.remove("active");
+  fahrenheit.classList.add("active");
   curTempElement.innerHTML = Math.round(fahrenheitTemp);
 }
 
@@ -100,8 +101,7 @@ form.addEventListener("submit", submitSearch);
 let currentLocationButton = document.querySelector("#Use-Curr");
 currentLocationButton.addEventListener("click", getCurrentLocation);
 
-let fahrenheitTemp = null
-let celciusTemp = null;
+let fahrenheitTemp = null;
 
 let celcius = document.querySelector("#celcius");
 celcius.addEventListener("click", showCelciusTemp);
