@@ -26,7 +26,8 @@ h1 {
 color: #fff;}
 
 #EndCode {text-align: center; font-size: smaller;}
-#temp-descript {text-transform: capitalize;}
+#temp-descript {text-transform: capitalize;
+font-size: 25px;}
 
 .active {
   color: #996666;
@@ -41,10 +42,9 @@ color: #fff;}
  image-rendering: auto;
   max-width: 55px;
 }
-#temp-descript {font-size: 30px;}
 
 .weather-forcast {margin-top: 20px;
-text-align: center;color:#0081c2;}
+text-align: center;color:#0156B3;}
 
 .forecast-temp {font-size: 12px;}
 .fore-temp-min {opacity: 0.6;}

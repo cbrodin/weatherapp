@@ -26,6 +26,33 @@ let now = new Date();
 let currentDate = document.querySelector("p");
 currentDate.innerHTML = formatDate(now);
 
+function displayForecast (){
+let forecastElement = document.querySelector("#forecast");
+
+let forecastHTML = "";
+forecastHTML =
+  forecastHTML +
+  `<div class = "row">
+<div class="col-2">
+            <div class="forecast-date">Mon </div>
+            <img src="http://openweathermap.org/img/wn/50d@2x.png"
+            alt=""
+            width="36"
+            />
+            <div class="forecast-temp">
+              <span class="fore-temp-max">
+              96°
+            </span>
+             <span class="fore-temp-min">
+              46°
+            </span>
+          </div>
+          </div>
+            </div>`;
+forecastElement.innerHTML = forecastHTML
+
+}
+
 function displayWeatherCondition(response) {
   let mainElement = document.querySelector("#main");
   let curTempElement = document.querySelector("#currentTemp");
@@ -36,6 +63,8 @@ function displayWeatherCondition(response) {
   let feelsElement = document.querySelector("#feelsLike");
   let tempDescrElement = document.querySelector("#temp-descript");
   let tempEmojiElement = document.querySelector("#tempEmoji");
+
+  displayForecast();
 
   fahrenheitTemp = response.data.main.temp;
 
@@ -110,7 +139,3 @@ fahrenheit.addEventListener("click", showFahrenheitTemp);
 
 searchCity("Austin");
 
-searchCity("#Den");
-searchCity("#Sea");
-searchCity("#Tam");
-searchCity("#Chi");
