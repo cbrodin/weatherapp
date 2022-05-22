@@ -29,12 +29,19 @@ currentDate.innerHTML = formatDate(now);
 function displayForecast (){
 let forecastElement = document.querySelector("#forecast");
 
-let forecastHTML = "";
-forecastHTML =
+let forecastHTML = `<div class = "row">`;
+let foredays = [
+  "Mon",
+  "Tues",
+  "Wed",
+  "Thu",
+  "Fri",
+  "Sat",
+];
+foredays.forEach(function (foredays) {forecastHTML =
   forecastHTML +
-  `<div class = "row">
-<div class="col-2">
-            <div class="forecast-date">Mon </div>
+  `<div class="col-2">
+            <div class="forecast-date">${foredays}</div>
             <img src="http://openweathermap.org/img/wn/50d@2x.png"
             alt=""
             width="36"
@@ -47,10 +54,10 @@ forecastHTML =
               46°
             </span>
           </div>
-          </div>
-            </div>`;
-forecastElement.innerHTML = forecastHTML
+            </div>`;});
 
+forecastHTML = forecastHTML + `</div>`
+forecastElement.innerHTML = forecastHTML
 }
 
 function displayWeatherCondition(response) {
