@@ -109,3 +109,8 @@ let fahrenheit = document.querySelector("#fahrenheit");
 fahrenheit.addEventListener("click", showFahrenheitTemp);
 
 searchCity("Austin");
+
+searchCity("#Den");
+searchCity("#Sea");
+searchCity("#Tam");
+searchCity("#Chi");

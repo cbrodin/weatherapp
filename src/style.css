@@ -42,3 +42,9 @@ color: #fff;}
   max-width: 55px;
 }
 #temp-descript {font-size: 30px;}
+
+.weather-forcast {margin-top: 20px;
+text-align: center;color:#0081c2;}
+
+.forecast-temp {font-size: 12px;}
+.fore-temp-min {opacity: 0.6;}
