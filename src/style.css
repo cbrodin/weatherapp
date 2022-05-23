@@ -5,8 +5,8 @@
   border-radius: 10px;
   padding: 40px 40px;
   color: #996666;
-background: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);}
-
+background: linear-gradient(to top, #bdc2e8 0%, #bdc2e8 1%, #e6dee9 100%);
+}
 #enterCity {border-radius: 10px;}
 
 body {
@@ -22,7 +22,7 @@ h1 {
   font-size: 30px;
 }
 #topSearch,
-#Den, #Chi, #Sea, #Tam,#Use-Curr {background-color: #c48f7f; 
+#Use-Curr {background-color: #c48f7f; 
 color: #fff;}
 
 #EndCode {text-align: center; font-size: smaller;}

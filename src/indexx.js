@@ -25,49 +25,51 @@ function formatDate(currentDate) {
 let now = new Date();
 let currentDate = document.querySelector("p");
 currentDate.innerHTML = formatDate(now);
-function formatDay(tStamp){
-  let date = new Date (tStamp * 1000); 
-  let day = date.getDate();
-  let days = [
-    "Sun",
-    "Mon",
-    "Tue",
-    "Wed",
-    "Thu",
-    "Fri",
-    "Sat",
-  ];
 
-  return days [day];
+function formatDay(tStamp) {
+  let date = new Date(tStamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
 }
 
+function displayForecast(response) {
+  let foredays = response.data.daily;
+  let forecastElement = document.querySelector("#forecast");
 
-function displayForecast (response){
-let forecastElement = document.querySelector("#forecast");
-
-let forecastHTML = `<div class = "row">`;
-foredays.forEach(function (forecastDay, index) 
-{ if (index <7){
-  forecastHTML =
-  forecastHTML +
-  `<div class="col-2">
+  let forecastHTML = `<div class = "row">`;
+  foredays.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="col-2">
             <div class="forecast-date">${formatDay(forecastDay.dt)}</div>
-            <img src="http://openweathermap.org/img/wn/${forecastDay.data.weather[0].icon}@2x.png"
+            <img src="http://openweathermap.org/img/wn/${
+              forecastDay.weather[0].icon
+            }@2x.png"
             alt=""
             width="36"
             />
             <div class="forecast-temp">
-              <span class="fore-temp-max">${Math.round(forecastDay.temp.max)}°</span>
-             <span class="fore-temp-min">${Math.round(forecastDay.temp.min)}° </span>
+              <span class="fore-temp-max">${Math.round(
+                forecastDay.temp.max
+              )}°</span>
+             <span class="fore-temp-min">${Math.round(
+               forecastDay.temp.min
+             )}° </span>
           </div>
-            </div>`;}})
+            </div>`;
+    }
+  });
 
-forecastHTML = forecastHTML + `</div>`
-forecastElement.innerHTML = forecastHTML;
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
 
 function getForecast(coordinates) {
   let apiKey = "40ee9c494fa4d6774c1dda0bb71d8806";
-  let apiUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=imperial`;
+let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(displayForecast);
 }
 function displayWeatherCondition(response) {
@@ -80,8 +82,6 @@ function displayWeatherCondition(response) {
   let feelsElement = document.querySelector("#feelsLike");
   let tempDescrElement = document.querySelector("#temp-descript");
   let tempEmojiElement = document.querySelector("#tempEmoji");
-
-displayForecast (response)
 
   fahrenheitTemp = response.data.main.temp;
 
@@ -155,4 +155,4 @@ let fahrenheit = document.querySelector("#fahrenheit");
 fahrenheit.addEventListener("click", showFahrenheitTemp);
 
 searchCity("Austin");
-}
+
