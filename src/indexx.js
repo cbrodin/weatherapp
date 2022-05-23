@@ -25,41 +25,51 @@ function formatDate(currentDate) {
 let now = new Date();
 let currentDate = document.querySelector("p");
 currentDate.innerHTML = formatDate(now);
+function formatDay(tStamp){
+  let date = new Date (tStamp * 1000); 
+  let day = date.getDate();
+  let days = [
+    "Sun",
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+  ];
 
-function displayForecast (){
+  return days [day];
+}
+
+
+function displayForecast (response){
 let forecastElement = document.querySelector("#forecast");
 
 let forecastHTML = `<div class = "row">`;
-let foredays = [
-  "Mon",
-  "Tues",
-  "Wed",
-  "Thu",
-  "Fri",
-  "Sat",
-];
-foredays.forEach(function (foredays) {forecastHTML =
+foredays.forEach(function (forecastDay, index) 
+{ if (index <7){
+  forecastHTML =
   forecastHTML +
   `<div class="col-2">
-            <div class="forecast-date">${foredays}</div>
-            <img src="http://openweathermap.org/img/wn/50d@2x.png"
+            <div class="forecast-date">${formatDay(forecastDay.dt)}</div>
+            <img src="http://openweathermap.org/img/wn/${forecastDay.data.weather[0].icon}@2x.png"
             alt=""
             width="36"
             />
             <div class="forecast-temp">
-              <span class="fore-temp-max">
-              96°
-            </span>
-             <span class="fore-temp-min">
-              46°
-            </span>
+              <span class="fore-temp-max">${Math.round(forecastDay.temp.max)}°</span>
+             <span class="fore-temp-min">${Math.round(forecastDay.temp.min)}° </span>
           </div>
-            </div>`;});
+            </div>`;}})
 
 forecastHTML = forecastHTML + `</div>`
-forecastElement.innerHTML = forecastHTML
-}
+forecastElement.innerHTML = forecastHTML;
 
+function getForecast(coordinates) {
+  let apiKey = "40ee9c494fa4d6774c1dda0bb71d8806";
+  let apiUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=imperial`;
+  axios.get(apiUrl).then(displayForecast);
+}
 function displayWeatherCondition(response) {
   let mainElement = document.querySelector("#main");
   let curTempElement = document.querySelector("#currentTemp");
@@ -71,7 +81,7 @@ function displayWeatherCondition(response) {
   let tempDescrElement = document.querySelector("#temp-descript");
   let tempEmojiElement = document.querySelector("#tempEmoji");
 
-  displayForecast();
+displayForecast (response)
 
   fahrenheitTemp = response.data.main.temp;
 
@@ -87,8 +97,8 @@ function displayWeatherCondition(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+    getForecast(response.data.coord);
 }
-
 
 function searchCity(city) {
   let apiKey = "40ee9c494fa4d6774c1dda0bb71d8806";
@@ -145,4 +155,4 @@ let fahrenheit = document.querySelector("#fahrenheit");
 fahrenheit.addEventListener("click", showFahrenheitTemp);
 
 searchCity("Austin");
-
+}
