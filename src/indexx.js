@@ -137,7 +137,9 @@ function showCelciusTemp(event) {
 function showFahrenheitTemp(event) {
   event.preventDefault();
   let curTempElement = document.querySelector("#currentTemp");
-  
+
+  celcius.classList.remove("active");
+  fahrenheit.classList.add("active");
   curTempElement.innerHTML = Math.round(fahrenheitTemp);
 }
 
