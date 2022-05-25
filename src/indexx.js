@@ -84,6 +84,8 @@ function displayWeatherCondition(response) {
   let tempEmojiElement = document.querySelector("#tempEmoji");
 
   fahrenheitTemp = response.data.main.temp;
+   celcius.classList.remove("active");
+   fahrenheit.classList.add("active");
 
   mainElement.innerHTML = response.data.name;
   curTempElement.innerHTML = Math.round(response.data.main.temp);
@@ -135,9 +137,7 @@ function showCelciusTemp(event) {
 function showFahrenheitTemp(event) {
   event.preventDefault();
   let curTempElement = document.querySelector("#currentTemp");
-
-  celcius.classList.remove("active");
-  fahrenheit.classList.add("active");
+  
   curTempElement.innerHTML = Math.round(fahrenheitTemp);
 }
 
